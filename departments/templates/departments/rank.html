@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    {% include 'departments/nav.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <main>
+        <div class="container">
+            <h1>Все должности:</h1>
+            {% for rank in ranks %}
+            <div class="card mb-3 mt-1 shadow-sm">
+                <div class="card-body">
+                    <a class="card-link muted" href="">
+                        <strong class="d-block text-gray-dark">{{ rank.name }}</strong>
+                    </a>
+                    <a class="card-link muted" href="">
+                        <strong class="d-block text-gray-dark">{{ rank.description }}</strong>
+                    </a>
+                    <a class="btn btn-sm btn-info" href="{% url 'rank_edit' rank.id %}" role="button">
+                        Редактировать
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+
+</html>

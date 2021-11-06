@@ -1,0 +1,38 @@
+<ul class="nav nav-tabs">
+    {% if user.is_authenticated %}
+    <a class="navbar-brand" href="{% url 'index' %}">Пользователь: {{ user.username }}.</a>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+            aria-expanded="false">Отделы</a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'new_department' %}">Новый отдел</a></li>
+            <li><a class="dropdown-item" href="{% url 'department_list' %}">Все отделы</a></li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+            aria-expanded="false">Должности</a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'new_rank' %}">Новая Должность</a></li>
+            <li><a class="dropdown-item" href="{% url 'rank_list' %}">Все должности</a></li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+            aria-expanded="false">Сотрудник</a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'new_employee' %}">Новый Сотрудник</a></li>
+        </ul>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Выйти</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">Войти</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'signup' %}">Регистрация</a>
+    </li>
+    {% endif %}
+</ul>
